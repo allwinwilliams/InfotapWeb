@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
-  
-  devise_for :admins
-  devise_for :users, controllers: {
-      sessions: 'sessions'
-  }
-  get 'pages/index'
   resources :feeds
+  get 'admin/Index'
+
+  get 'pages/index'
+  root 'pages#index'
+  devise_for :admins
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
+  
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
@@ -61,3 +59,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+

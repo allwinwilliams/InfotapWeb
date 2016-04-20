@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+#   10.times { |i| Feed.create(title: "Feed #{i}", description: "description #{i}", department:"department #{i}")}
