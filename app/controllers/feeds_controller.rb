@@ -1,5 +1,4 @@
-class FeedsController < ApplicationController
-  
+class FeedsController < ApplicationController  
   def index
     @feeds = Feed.all
     @feed = Feed.find_by(id: params[:id])
@@ -31,7 +30,6 @@ class FeedsController < ApplicationController
     @feed = Feed.find_by(id: params[:id])
     unless @feed
       render status: 404, nothing: true
-    end
-    
+    end    
   end
 end
