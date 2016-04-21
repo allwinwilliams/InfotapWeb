@@ -29,7 +29,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-gem 'devise', '3.4.1'
+#gem 'devise', '3.4.1'
+gem "devise", :git => "git://github.com/plataformatec/devise.git"
+
+
 gem 'bootstrap-sass'
 
 # Use Capistrano for deployment

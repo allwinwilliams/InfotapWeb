@@ -3,7 +3,7 @@ class CreateFeeds < ActiveRecord::Migration
     create_table :feeds do |t|
       t.string :title
       t.text :description
-      t.string :department
+      t.integer :department_id
 
       t.timestamps null: false
     end

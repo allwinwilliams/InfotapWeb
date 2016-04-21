@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
-<%= @feed.title %>
-<%= @feed.description %>
-<%= @feed.department %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @feed.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @feed.description %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @feed.department_id %>
+</p>
+
 <%= link_to 'Edit', edit_feed_path(@feed) %> |
 <%= link_to 'Back', feeds_path %>
