@@ -1,6 +1,7 @@
-class FeedsController < ApplicationController
-  before_action :authenticate_user!
+class FeedsController < AdminController
+  before_action :authenticate_admin!
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
+
 
   # GET /feeds
   # GET /feeds.json
@@ -11,32 +12,49 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+
+    @feed = Feed.find(params[:id])
   end
   # GET /feeds/new
   def new  
+    @departments=Department.all
     @feed = Feed.new
+    
   end
 
   # GET /feeds/1/edit
   def edit
+
+    @departments=Department.all
+  end
+  
+  def show_departments 
+    if params[:id]
+      @department=Department.find(params[:id])
+      @feeds = Feed.all
+    else
+      @departments=Department.all
+    end
+   
   end
 
   # POST /feeds
   # POST /feeds.json
   def create
-    before_action :authenticate_admin!
+    
     @feed = Feed.new(feed_params)
-
     respond_to do |format|
       if @feed.save
         format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else
+        @departments=Department.all
         format.html { render :new }
         format.json { render json: @feed.errors, status: :unprocessable_entity }
       end
     end
   end
+
 
   # PATCH/PUT /feeds/1
   # PATCH/PUT /feeds/1.json
@@ -73,3 +91,5 @@ class FeedsController < ApplicationController
       params.require(:feed).permit(:title, :description, :department_id)
     end
 end
+
+

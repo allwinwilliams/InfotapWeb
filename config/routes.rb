@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  resources :feeds
+  
   resources :feeds
   resources :departments
   get 'admin/Index'
-
   get 'pages/index'
   root 'pages#index'
   devise_for :admins

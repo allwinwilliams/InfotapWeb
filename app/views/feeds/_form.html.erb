@@ -20,8 +20,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.number_field :department_id %>
+    <%= f.collection_select :department_id, @departments, :id,:name, prompt: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

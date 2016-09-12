@@ -1,4 +1,4 @@
-class DepartmentsController < ApplicationController
+class DepartmentsController < AdminController
   before_action :authenticate_admin!
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
@@ -11,6 +11,7 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
+    @department = Department.find(params[:id])
   end
 
   # GET /departments/new
@@ -24,6 +25,7 @@ class DepartmentsController < ApplicationController
 
   # POST /departments
   # POST /departments.json
+  end
   def create
     @department = Department.new(department_params)
 
