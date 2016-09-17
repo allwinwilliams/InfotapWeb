@@ -1,6 +1,6 @@
-class DepartmentsController < UserController
+class User::DepartmentsController < UserController
   before_action :authenticate_user!
-  before_action :set_department, only: [:show, :edit, :update, :destroy]
+  before_action :set_department, only: [:show]
 
   # GET /departments
   # GET /departments.json

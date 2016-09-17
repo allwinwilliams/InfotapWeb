@@ -1,6 +1,6 @@
-class FeedsController < UserController
+class User::FeedsController < UserController
   before_action :authenticate_user!
-  before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :set_feed, only: [:show]
 
 
   # GET /feeds
@@ -12,7 +12,6 @@ class FeedsController < UserController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-
     @feed = Feed.find(params[:id])
   end
   # GET /feeds/new
@@ -20,7 +19,14 @@ class FeedsController < UserController
 
   # GET /feeds/1/edit
  
-  
+  def show_departments
+    if params[:id]
+      @department=Department.find(params[:id])
+      @feeds = Feed.all
+    else
+      @departments=Department.all
+    end
+  end
  
 
   # POST /feeds

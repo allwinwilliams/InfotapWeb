@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :feeds
-  resources :departments
+   resources :feeds
+   resources :departments
   get 'admin/Index'
   get 'pages/index'
   root 'pages#index'
@@ -59,5 +59,17 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    resources :feeds
+    resources :departments
+  end
+  namespace :user do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    resources :feeds
+    resources :departments
+  end
 end
 

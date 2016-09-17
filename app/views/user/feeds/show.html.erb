@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @feed.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @feed.description %>
+</p>
+
+<p>
+  <strong>Department: </strong>
+  <%= link_to @feed.department.name
+  	#, :action => "show_departments", :id => @feed.department.id 
+  %>
+</p>
+
+<%= link_to ' << Feeds List ', feeds_path%>

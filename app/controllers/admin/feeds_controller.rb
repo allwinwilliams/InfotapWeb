@@ -1,4 +1,4 @@
-class FeedsController < AdminController
+class Admin::FeedsController < AdminController
   before_action :authenticate_admin!
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
@@ -24,7 +24,6 @@ class FeedsController < AdminController
 
   # GET /feeds/1/edit
   def edit
-
     @departments=Department.all
   end
   
@@ -35,13 +34,11 @@ class FeedsController < AdminController
     else
       @departments=Department.all
     end
-   
   end
 
   # POST /feeds
   # POST /feeds.json
   def create
-    
     @feed = Feed.new(feed_params)
     respond_to do |format|
       if @feed.save
@@ -61,7 +58,7 @@ class FeedsController < AdminController
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
+        format.html { redirect_to ("http://localhost:3000/admin/feeds/"), notice: 'Feed was successfully updated.' }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit }

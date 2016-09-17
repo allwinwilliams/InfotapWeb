@@ -1,4 +1,4 @@
-class DepartmentsController < AdminController
+class Admin::DepartmentsController < AdminController
   before_action :authenticate_admin!
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
