@@ -3,7 +3,8 @@
 <p>
   <strong>Name:</strong>
   <%= @department.name %>
+  <strong>Id:</strong>
+  <%=  link_to @department.id, user_show_feeds_path(@department.id) %>
 </p>
 
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path %>
+<%= link_to '<<Back', user_departments_path %>

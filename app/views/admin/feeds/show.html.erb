@@ -12,10 +12,7 @@
 
 <p>
   <strong>Department:</strong>
-  <%= link_to admin_department_path(@feed.id)
-# ,:action => "show_departments", 
-# :id => admin_department_path(@feed.department.id) 
-	%>
+  <%=  link_to @feed.department_id, admin_show_feeds_path(@feed.department_id) %>
 </p>
 
 <%= link_to 'Edit', edit_admin_feed_path(@feed) %> |

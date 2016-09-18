@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root 'pages#index'
   devise_for :admins
   devise_for :users
+  get 'user/departments/:id/feeds'=> 'user/departments#show_feeds', as: :user_show_feeds
+  get 'admin/departments/:id/feeds'=> 'admin/departments#show_feeds', as: :admin_show_feeds
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

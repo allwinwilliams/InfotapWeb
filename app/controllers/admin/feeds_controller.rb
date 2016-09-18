@@ -6,7 +6,14 @@ class Admin::FeedsController < AdminController
   # GET /feeds
   # GET /feeds.json
   def index
-    @feeds = Feed.all
+    if params[:id]
+      @feed = Feed.find(params[:id])
+    elsif params[:department_id]
+      @department=Department.find(params[:department_id])
+      @feeds = Feed.all
+    else
+      @feeds = Feed.all
+    end
   end
 
   # GET /feeds/1
@@ -16,26 +23,20 @@ class Admin::FeedsController < AdminController
   end
   # GET /feeds/new
   def new  
-    @departments=Department.all
     @feed = Feed.new
-    
+    @departments=Department.all
   end
 
   # GET /feeds/1/edit
   def edit
     @feed = Feed.find(params[:id])
-
     @departments=Department.all
     
   end
   
   def show_departments 
-    if params[:id]
       @department=Department.find(params[:id])
       @feeds = Feed.all
-    else
-      @departments=Department.all
-    end
   end
 
   # POST /feeds

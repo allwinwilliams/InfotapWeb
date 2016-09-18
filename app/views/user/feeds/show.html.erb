@@ -12,9 +12,7 @@
 
 <p>
   <strong>Department: </strong>
-  <%= link_to @feed.department.name
-  	#, :action => "show_departments", :id => @feed.department.id 
-  %>
+  <%=  link_to @feed.department_id, user_show_feeds_path(@feed.department_id) %>
 </p>
 
 <%= link_to ' << Feeds List ', user_feeds_path%>

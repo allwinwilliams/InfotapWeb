@@ -5,7 +5,12 @@ class User::DepartmentsController < UserController
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all
+    if params[:id]
+      @department=Department.find(params[:id])
+      @feeds = Feed.all
+    else
+      @departments=Department.all
+    end
   end
 
   # GET /departments/1
@@ -15,7 +20,14 @@ class User::DepartmentsController < UserController
   end
 
   # GET /departments/new
-
+  def show_feeds
+    if params[:id]
+      @department=Department.find(params[:id])
+      @feeds = Feed.all
+    else
+      @departments=Department.all
+    end
+  end
 
   # GET /departments/1/edit
 

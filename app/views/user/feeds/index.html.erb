@@ -1,27 +1,73 @@
 <p id="notice"><%= notice %></p>
+<% if @feed %>
+  <p>
+    <strong>Title:</strong>
+    <%= @feed.title %>
+  </p>
 
-<h1>Listing Feeds</h1>
+  <p>
+    <strong>Description:</strong>
+    <%= @feed.description %>
+  </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Department</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <p>
+    <strong>Department:</strong>
+    <%=  link_to @feed.department_id, user_show_feeds_path(@feed.department_id) %>
+  </p>
+<% else %>
 
-  <tbody>
-    <% @feeds.each do |feed| %>
-      <tr>
-        <td><%= feed.title %></td>
-        <td><%= feed.description %></td>
-        <td><%= feed.department_id %></td>
-        <td>
-          <%= link_to 'Show', user_feed_path(feed.id) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% if @department %>
+    <h1>Listing Department Feeds</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Department</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @department.feeds.each do |feed| %>
+          <tr>
+            <td><%= feed.title %></td>
+            <td><%= feed.description %></td>
+            <td><%=  link_to feed.department_id, user_show_feeds_path(feed.department_id) %></td>
+            <td><%= link_to 'Show', user_feed_path(feed) %></td>
+            <td><%= link_to 'Edit', edit_user_feed_path(feed) %></td>
+            <td><%= link_to 'Destroy', user_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h1>Listing Feeds</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Department</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @feeds.each do |feed| %>
+          <tr>
+            <td><%= feed.title %></td>
+            <td><%= feed.description %></td>
+            <td><%=  link_to feed.department_id, user_show_feeds_path(feed.department_id) %></td>
+            <td><%= link_to 'Show', user_feed_path(feed) %></td>
+            <td><%= link_to 'Edit', edit_user_feed_path(feed) %></td>
+            <td><%= link_to 'Destroy', user_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+<br>

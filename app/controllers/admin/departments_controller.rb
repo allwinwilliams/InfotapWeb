@@ -5,15 +5,31 @@ class Admin::DepartmentsController < AdminController
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all
+    if params[:id]
+      @department=Department.find(params[:id])
+      @feeds = Feed.all
+    else
+      @departments=Department.all
+    end
   end
 
   # GET /departments/1
   # GET /departments/1.json
   def show
     @department = Department.find(params[:id])
+
   end
 
+
+  def show_feeds
+    if params[:id]
+      @department=Department.find(params[:id])
+      @feeds = Feed.all
+    else
+      @departments=Department.all
+    end
+  end
+  
   # GET /departments/new
   def new
     @department = Department.new
