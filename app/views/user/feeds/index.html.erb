@@ -19,7 +19,7 @@
         <td><%= feed.description %></td>
         <td><%= feed.department_id %></td>
         <td>
-          <%= link_to 'Show', feed %>
+          <%= link_to 'Show', user_feed_path(feed.id) %>
         </td>
       </tr>
     <% end %>

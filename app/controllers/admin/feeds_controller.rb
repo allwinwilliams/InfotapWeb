@@ -12,7 +12,6 @@ class Admin::FeedsController < AdminController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-
     @feed = Feed.find(params[:id])
   end
   # GET /feeds/new
@@ -24,7 +23,10 @@ class Admin::FeedsController < AdminController
 
   # GET /feeds/1/edit
   def edit
+    @feed = Feed.find(params[:id])
+
     @departments=Department.all
+    
   end
   
   def show_departments 
@@ -42,7 +44,7 @@ class Admin::FeedsController < AdminController
     @feed = Feed.new(feed_params)
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.html { redirect_to @admin_feeds, notice: 'Feed was successfully created.' }
         format.json { render :show, status: :created, location: @feed }
       else
         @departments=Department.all
@@ -58,7 +60,7 @@ class Admin::FeedsController < AdminController
   def update
     respond_to do |format|
       if @feed.update(feed_params)
-        format.html { redirect_to ("http://localhost:3000/admin/feeds/"), notice: 'Feed was successfully updated.' }
+        format.html { redirect_to @admin_feeds, notice: 'Feed was successfully updated.' }
         format.json { render :show, status: :ok, location: @feed }
       else
         format.html { render :edit }
@@ -72,7 +74,7 @@ class Admin::FeedsController < AdminController
   def destroy
     @feed.destroy
     respond_to do |format|
-      format.html { redirect_to feeds_url, notice: 'Feed was successfully destroyed.' }
+      format.html { redirect_to admin_feeds_url, notice: 'Feed was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

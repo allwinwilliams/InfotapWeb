@@ -25,7 +25,7 @@ class Admin::DepartmentsController < AdminController
 
   # POST /departments
   # POST /departments.json
-  end
+  
   def create
     @department = Department.new(department_params)
 
@@ -74,4 +74,4 @@ class Admin::DepartmentsController < AdminController
     def department_params
       params.require(:department).permit(:name)
     end
-end
+  end
