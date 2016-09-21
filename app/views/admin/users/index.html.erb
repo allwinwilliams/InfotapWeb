@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+<% if @user %>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+<% else %>
+
+  <% if @department %>
+    <h1>Listing Department users</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Department</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @department.users.each do |user| %>
+          <tr>
+            <td><%= user.title %></td>
+            <td><%= user.description %></td>
+            <td><%=  link_to user.department_id, admin_show_users_path(user.department_id) %></td>
+            <td><%= link_to 'Show', admin_user_path(user) %></td>
+            <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+            <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h1>Listing users</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+<br>
+
