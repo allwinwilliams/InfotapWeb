@@ -1,36 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @department.name %>
-</p>
-
-<%= link_to 'Edit', edit_admin_department_path(@department) %> |
-<%= link_to 'Back', admin_departments_path %>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Department</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<%= link_to '<<Back', admin_departments_path, :class=>'btn btn-primary btn-sm color-white ' %>
+<h1  class="text-center"><strong><%= @department.name %></strong></h1>
+<div class="mp-x-0 row">
+  <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_department_path(department) %></strong>
+  <strong class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_department_path(department), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+</div>
     <% @department.feeds.each do |feed| %>
-      <tr>
-        <td><%= feed.title %></td>
-        <td><%= feed.description %></td>
-        <td><%= feed.department_id %></td>
-        <td><%= link_to 'Show', admin_feed_path(feed) %></td>
-        <td><%= link_to 'Edit', edit_admin_feed_path(feed) %></td>
-        <td><%= link_to 'Destroy', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="list-group mp-x-0 row">
+        <h4 class="list-group-item-heading col-md-12 color-blue"><%= truncate(feed.title, :length => 50) %></h4>
+        <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
+        <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, admin_show_feeds_path(feed.department_id) %></p>
+        <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
+        <div class="mp-x-0 row">
+          <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_feed_path(feed) %></strong>
+          <strong class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Department', new_admin_department_path %>

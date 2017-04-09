@@ -1,8 +1,6 @@
 class Admin::UsersController < AdminController
   before_action :authenticate_admin!
-  before_save :ensure_authentication_token
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
 
   # GET /feeds
   # GET /feeds.json
@@ -20,13 +18,13 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
   end
   # GET /feeds/new
-  def new  
+  def new
     @user = User.new
   end
 
   # GET /feeds/1/edit
   def edit
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
   end
   # POST /feeds
   # POST /feeds.json
@@ -79,5 +77,3 @@ class Admin::UsersController < AdminController
       params.require(:user).permit(:name, :email)
     end
 end
-
-

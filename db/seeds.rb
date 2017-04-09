@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#   10.times { |i| Feed.create(title: "Feed #{i}", description: "description #{i}", department_id:"#{i}")}
-#   10.times { |i| Department.create(name:"dept:#{i}")}
+   14.times { |i| Feed.create(title: "Feed #{i+1}", description: "description #{i+1}", department_id:"#{(i+1)%5}")}
+   8.times { |i| Department.create(name:"dept:#{i+1}")}

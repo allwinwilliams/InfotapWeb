@@ -1,12 +1,10 @@
 <p id="notice"><%= notice %></p>
+<%= link_to '<< Users List', admin_users_path, :class=>'btn btn-primary btn-sm'%>
 
-<p>
-  <strong>Title:</strong>
-  <%= @user.name %>
-</p>
+<h1 class="color-blue text-center"><strong><%= @user.email %></strong></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @user.email %>
-</p>
-<%= link_to ' << Feeds List ', admin_users_path%>
+<p class="list-group-item-text color-grey color-black text-center mp-x-0">user id: <%=  @user.id %></p>
+<p class="list-group-item-text color-grey color-grey text-center mp-x-0">sign in count: <%=  @user.sign_in_count %></p>
+<p class="list-group-item-text color-grey color-grey text-center mp-x-0">last sign in: <%= Time.at(@user.last_sign_in_at).strftime("%d-%m-%y %I:%M%P") %></p>
+<p class="list-group-item-text color-grey color-grey text-center mp-x-0">created at sign in: <%= Time.at(@user.created_at).strftime("%d-%m-%y %I:%M%P") %></p>
+<p class="list-group-item-text color-grey color-grey text-center mp-x-0">updated at in: <%= Time.at(@user.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>

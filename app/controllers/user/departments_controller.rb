@@ -1,15 +1,13 @@
 class User::DepartmentsController < UserController
-  before_action :authenticate_user!
   before_action :set_department, only: [:show]
-
   # GET /departments
   # GET /departments.json
   def index
     if params[:id]
       @department=Department.find(params[:id])
-      @feeds = Feed.all
+      @feeds = Feed.all.order({ updated_at: :desc })
     else
-      @departments=Department.all
+      @departments=Department.all.order({ updated_at: :desc })
     end
   end
 
@@ -23,9 +21,9 @@ class User::DepartmentsController < UserController
   def show_feeds
     if params[:id]
       @department=Department.find(params[:id])
-      @feeds = Feed.all
+      @feeds = Feed.all.order({ updated_at: :desc })
     else
-      @departments=Department.all
+      @departments=Department.all.order({ updated_at: :desc })
     end
   end
 

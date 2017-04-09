@@ -1,19 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @feed.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
+<%= link_to '<< Feeds List', admin_feeds_path, :class=>'btn btn-primary btn-sm'%>
+  <div class="mp-x-0 row">
+    <strong class="list-group-item-text text-center color-white col-md-6"><%=  link_to "EDIT", edit_admin_feed_path(@feed),:class=>'btn btn-success btn-lg' %></strong>
+    <strong class="list-group-item-text text-center color-white col-md-6"><%= link_to 'DELETE', admin_feed_path(@feed), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger btn-lg' %></strong>
+  </div>
+  <h1 class="text-center color-blue"><strong><%= @feed.title %></strong></h1>
+  <h5 class="text-center color-black"><%=  link_to Department.find(@feed.department_id).name, admin_show_feeds_path(@feed.department_id) %></h5>
+<p class="mp-x-0">
   <%= @feed.description %>
 </p>
-
-<p>
-  <strong>Department:</strong>
-  <%=  link_to @feed.department_id, admin_show_feeds_path(@feed.department_id) %>
-</p>
-
-<%= link_to 'Edit', edit_admin_feed_path(@feed) %> |
-<%= link_to ' << Feeds List ', admin_feeds_path%>

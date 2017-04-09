@@ -1,8 +1,5 @@
 class User::FeedsController < UserController
-  before_action :authenticate_user!
   before_action :set_feed, only: [:show]
-
-
   # GET /feeds
   # GET /feeds.json
   def index
@@ -10,38 +7,39 @@ class User::FeedsController < UserController
       @feed = Feed.find(params[:id])
     elsif params[:department_id]
       @department=Department.find(params[:department_id])
-      @feeds = Feed.all
+      @feeds = Feed.all.order({ updated_at: :desc })
+    elsif params[:q]
+      @feeds=Feed.search(params[:q])
     else
-      @feeds = Feed.all
+      @feeds = Feed.all.order({ updated_at: :desc })
     end
   end
-
   # GET /feeds/1
   # GET /feeds/1.json
   def show
     @feed = Feed.find(params[:id])
   end
   # GET /feeds/new
-  
-  def show_departments 
+
+  def show_departments
     @department=Department.find(params[:id])
-    @feeds = Feed.all
+    @feeds = Feed.all.order({ updated_at: :desc })
   end
-  
+
   # GET /feeds/1/edit
- 
+
 
   # POST /feeds
   # POST /feeds.json
-  
+
 
 
   # PATCH/PUT /feeds/1
   # PATCH/PUT /feeds/1.json
- 
+
   # DELETE /feeds/1
   # DELETE /feeds/1.json
- 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
@@ -53,5 +51,3 @@ class User::FeedsController < UserController
       params.require(:feed).permit(:title, :description, :department_id)
     end
 end
-
-

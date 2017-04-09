@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
+<%= link_to '<< Departments List', user_departments_path, :class=>'btn btn-success btn-sm'%>
 
-<p>
-  <strong>Name:</strong>
-  <%= @department.name %>
-  <strong>Id:</strong>
-  <%=  link_to @department.id, user_show_feeds_path(@department.id) %>
-</p>
+  <h1 class="text-center"><strong><%= @department.name %></strong></h1>
+  <h5 class="text-center">Id:<%=  link_to @department.id, user_show_feeds_path(@department.id) %></h5>
 
-<%= link_to '<<Back', user_departments_path %>
+    <% @department.feeds.each do |feed| %>
+    <div class="list-group mp-x-0 row">
+        <h4 class="list-group-item-heading col-md-12 color-blue"><%= link_to truncate(feed.title, :length => 50), user_feed_path(feed) %></h4>
+        <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
+        <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, user_show_feeds_path(feed.department_id) %></p>
+        <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
+      </a>
+    </div>
+    <% end %>
