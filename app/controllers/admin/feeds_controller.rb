@@ -1,5 +1,4 @@
 class Admin::FeedsController < AdminController
-
   before_action :authenticate_admin!
   before_action :set_feed, only: [:new, :create, :show, :edit, :update, :destroy]
 
