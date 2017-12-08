@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
     <h1><strong><%= @department.name %></strong></h1>
+    
     <% @department.feeds.each do |feed| %>
     <div class="list-group mp-x-0 row">
         <h4 class="list-group-item-heading col-md-12 color-blue"><%= link_to truncate(feed.title, :length => 50), user_feed_path(feed) %></h4>

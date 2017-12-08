@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Knowtify</title>
+  <title>Infotap</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -16,30 +16,30 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Knowtify</a>
+          <a class="navbar-brand" href="#">Infotap</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav  navbar-right">
-            <% if user_signed_in? %>
-              <li><%= link_to current_user.email , '#' , :class => 'active navbar-link' %> </li>
-              <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-              <li><%= link_to "Feeds", user_feeds_path, :class => 'navbar-link'  %></li>
-              <li><%= link_to "Departments", user_departments_path, :class => 'navbar-link'  %></li>
-
+            <% if admin_signed_in? %>
+              <li><%= link_to current_admin.email , '#' , :class => 'active navbar-link' %> </li>
+              <li><%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %> </li>
+              <li><%= link_to "Feeds", admin_feeds_path, :class => 'navbar-link'  %></li>
+              <li><%= link_to "Departments", admin_departments_path, :class => 'navbar-link'  %></li>
+              <li><%= link_to "Users", admin_users_path, :class => 'navbar-link'  %></li>
+              <li><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %></li>
             <% else %>
-              <% if admin_signed_in? %>
-                <li><%= link_to current_admin.email , '#' , :class => 'active navbar-link' %> </li>
-                <li><%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %> </li>
-                <li><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Feeds", admin_feeds_path, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Departments", admin_departments_path, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Users", admin_users_path, :class => 'navbar-link'  %></li>
-              <%else%>
-                <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Admin", new_admin_session_path, :class => 'navbar-link'  %></li>
-              <%end%>
+              <% if user_signed_in? %>
+                <li><%= link_to current_user.email , '#' , :class => 'active navbar-link' %> </li>
+                <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
+                <li><%= link_to "All Feeds", user_feeds_path, :class => 'navbar-link'  %></li>
+                <li><%= link_to "Your Feeds", department_user_feeds_path, :class => 'navbar-link'  %></li>
+                <li><%= link_to "Departments", user_departments_path, :class => 'navbar-link'  %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                <%else%>
+                  <li><%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %></li>
+                  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+                  <li><%= link_to "Admin", new_admin_session_path, :class => 'navbar-link'  %></li>
+                <%end%>
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->
@@ -63,7 +63,7 @@
 </div>
 <footer class="footer">
    <div class="container">
-     <p class="text-muted">DBMS project by Allwin & Aravinth.</p>
+     <p class="text-muted">Developed by Allwin</p>
    </div>
   </footer>
 </body>

@@ -1,23 +1,22 @@
 class User::DepartmentsController < UserController
   before_action :set_department, only: [:show]
-  # GET /departments
-  # GET /departments.json
+
   def index
-    if params[:id]
-      @department=Department.find(params[:id])
-      @feeds = Feed.all.order({ updated_at: :desc })
-    else
+      @department_user_ids=DepartmentUser
+                            .select('departments.id')
+                            .joins(:department)
+                            .where('departments_users.user' => current_user)
+                            .collect{|x| x.id}
       @departments=Department.all.order({ updated_at: :desc })
-    end
+      @department=Department.new
   end
 
-  # GET /departments/1
-  # GET /departments/1.json
+
   def show
     @department = Department.find(params[:id])
   end
 
-  # GET /departments/new
+
   def show_feeds
     if params[:id]
       @department=Department.find(params[:id])
@@ -26,21 +25,6 @@ class User::DepartmentsController < UserController
       @departments=Department.all.order({ updated_at: :desc })
     end
   end
-
-  # GET /departments/1/edit
-
-
-  # POST /departments
-  # POST /departments.json
-
-
-
-  # PATCH/PUT /departments/1
-  # PATCH/PUT /departments/1.json
-
-
-  # DELETE /departments/1
-  # DELETE /departments/1.json
 
 
   private

@@ -3,7 +3,17 @@
 
   <h1 class="text-center"><strong><%= @department.name %></strong></h1>
   <h5 class="text-center">Id:<%=  link_to @department.id, user_show_feeds_path(@department.id) %></h5>
-
+  <% if current_user.is_subscribed?(@department) %>
+    <%= form_for @department, method: :post, url: department_user_unsubscribe_path  do |form| %>
+      <%= form.text_field :id, value: @department.id, type: "hidden" %>
+      <%= form.submit "unsubcribe" %>
+    <% end %>
+  <% else %>
+      <%= form_for @department, method: :post, url: department_user_subscribe_path  do |form| %>
+        <%= form.text_field :id, value: @department.id, type: "hidden" %>
+        <%= form.submit "subcribe" %>
+      <% end %>
+  <% end %>
     <% @department.feeds.each do |feed| %>
     <div class="list-group mp-x-0 row">
         <h4 class="list-group-item-heading col-md-12 color-blue"><%= link_to truncate(feed.title, :length => 50), user_feed_path(feed) %></h4>

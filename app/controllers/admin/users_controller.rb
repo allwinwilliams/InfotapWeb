@@ -16,6 +16,10 @@ class Admin::UsersController < AdminController
   # GET /feeds/1.json
   def show
     @user = User.find(params[:id])
+    @departments_users=DepartmentUser
+                      .select('departments.*')
+                      .joins(:department)
+                      .where('departments_users.user' => @user)
   end
   # GET /feeds/new
   def new

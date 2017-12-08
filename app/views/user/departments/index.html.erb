@@ -1,22 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% if @department %>
-  <p>
-    <strong>Name:</strong>
-    <%= @department.name %>
-  </p>
 
-  <%= link_to 'Edit', edit_user_department_path(@department) %> |
-  <%= link_to 'Back', user_departments_path %>
-      <% @department.feeds.each do |feed| %>
-        <div class="list-group mp-x-0 row">
-            <h4 class="list-group-item-heading col-md-12 color-blue"><%= link_to truncate(feed.title, :length => 50), user_feed_path(feed) %></h4>
-            <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
-            <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, user_show_feeds_path(feed.department_id) %></p>
-            <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
-          </a>
-        </div>
-      <% end %>
-<% else %>
   <h1>Listing Departments</h1>
       <% @departments.each do |department| %>
         <div class="list-group mp-x-0 row">
@@ -24,9 +7,20 @@
             <h4 class="list-group-item-heading col-md-12 color-blue"><%=  truncate(department.name, :length => 50) %></h4>
             <h5 class="list-group-item-heading col-md-12 color-black"> id :<%=  department.id %></h5>
           <%end%>
+          <% if @department_user_ids.include?(department.id) %>
+            <%= form_for @department, method: :post, url: department_user_unsubscribe_path  do |form| %>
+              <%= form.text_field :id, value: department.id, type: "hidden" %>
+              <%= form.submit "unsubcribe" %>
+            <% end %>
+          <% else %>
+              <%= form_for @department, method: :post, url: department_user_subscribe_path  do |form| %>
+                <%= form.text_field :id, value: department.id, type: "hidden" %>
+                <%= form.submit "subcribe" %>
+              <% end %>
+          <% end %>
         </div>
 
       <% end %>
 
-<% end %>
+
 <br>

@@ -8,3 +8,14 @@
 <p class="list-group-item-text color-grey color-grey text-center mp-x-0">last sign in: <%= Time.at(@user.last_sign_in_at).strftime("%d-%m-%y %I:%M%P") %></p>
 <p class="list-group-item-text color-grey color-grey text-center mp-x-0">created at sign in: <%= Time.at(@user.created_at).strftime("%d-%m-%y %I:%M%P") %></p>
 <p class="list-group-item-text color-grey color-grey text-center mp-x-0">updated at in: <%= Time.at(@user.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
+<h4>subscribed Departments</h4>
+<% @departments_users.each do |department| %>
+  <div class="list-group mp-x-0 row">
+    <%= link_to admin_department_path(department.id) do %>
+      <h4 class="list-group-item-heading col-md-12 color-blue"><%=  truncate(department.name, :length => 50) %></h4>
+      <h5 class="list-group-item-heading col-md-12 color-black"> id :<%=  department.id %></h5>
+    <%end%>
+
+  </div>
+
+<% end %>

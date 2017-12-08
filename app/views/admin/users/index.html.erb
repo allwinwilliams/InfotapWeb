@@ -17,7 +17,7 @@
           <p class="list-group-item-text color-grey col-md-3 color-grey">user id: <%=  user.id %></p>
           <p class="list-group-item-text color-grey col-md-3 color-grey">sign in count: <%=  user.sign_in_count %></p>
           <p class="list-group-item-text color-grey col-md-3 color-grey">last sign in: <%= Time.at(user.last_sign_in_at).strftime("%d-%m-%y %I:%M%P") %></p>
-          <p class="list-group-item-text color-grey col-md-3 color-grey">last sign in: <%= Time.at(user.created_at).strftime("%d-%m-%y %I:%M%P") %></p>
+          <p class="list-group-item-text color-grey col-md-3 color-grey">created in: <%= Time.at(user.created_at).strftime("%d-%m-%y %I:%M%P") %></p>
         <%end%>
       </div>
     <% end %>
