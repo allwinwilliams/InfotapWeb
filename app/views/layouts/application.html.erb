@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="=en-US">
 <head>
   <title>Infotap</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -16,7 +16,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Infotap</a>
+          <%= link_to "InfoTap" , (user_signed_in?) ? department_user_feeds_path : root_path , :class => 'navbar-brand' %>
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav  navbar-right">

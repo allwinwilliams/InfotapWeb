@@ -1,12 +1,17 @@
 class User::DepartmentsUsersController < UserController
   def index
-    departments_users=DepartmentUser
-                      .select('departments.id')
-                      .joins(:department)
-                      .where('departments_users.user' => current_user)
-    @feeds = Feed
-              .where(department_id: departments_users)
-              .order({ updated_at: :desc })
+
+    if params[:q]
+      @feeds = Feed.search(params[:q])
+    else
+      departments_users=DepartmentUser
+                        .select('departments.id')
+                        .joins(:department)
+                        .where('departments_users.user' => current_user)
+      @feeds = Feed
+                .where(department_id: departments_users)
+                .order({ updated_at: :desc })
+    end
   end
 
   def subscribe

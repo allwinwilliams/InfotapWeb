@@ -5,12 +5,14 @@ class Feed < ActiveRecord::Base
 	def self.search(search)
 	  if search
 			find_by_sql(
-			"(select * from feeds where department_id in
-			(select id from departments
-			where name like \"%"+search+"%\"))
-			union
-			(select * from feeds where title like \"%"+search+"%\")
-			order by updated_at desc;"
+				"(select * from feeds where department_id in
+					(select id from departments
+					where name like \"%"+search+"%\"))
+				union
+					(select * from feeds where title like \"%"+search+"%\")
+				union
+					(select * from feeds where description like \"%"+search+"%\")
+				order by updated_at desc;"
 			)
 	  else
 	    find(:all).order({ updated_at: :desc })
