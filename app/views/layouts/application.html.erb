@@ -7,39 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to "InfoTap" , (user_signed_in?) ? department_user_feeds_path : root_path , :class => 'navbar-brand' %>
+        <%= link_to "InfoTap" , (user_signed_in?) ? department_user_feeds_path : root_path , :class => 'navbar-brand' %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav  navbar-right">
+        <div class="collapse navbar-collapse mt-2" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
-              <li><%= link_to current_admin.email , '#' , :class => 'active navbar-link' %> </li>
-              <li><%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %> </li>
-              <li><%= link_to "Feeds", admin_feeds_path, :class => 'navbar-link'  %></li>
-              <li><%= link_to "Departments", admin_departments_path, :class => 'navbar-link'  %></li>
-              <li><%= link_to "Users", admin_users_path, :class => 'navbar-link'  %></li>
-              <li><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %></li>
+              <li class="nav-item active"><%= link_to current_admin.email , '#' , :class => 'nav-link' %> </li>
+              <li class="nav-item"><%= link_to 'Edit profile', edit_admin_registration_path, :class => 'nav-link' %> </li>
+              <li class="nav-item"><%= link_to "Feeds", admin_feeds_path, :class => 'nav-link'  %></li>
+              <li class="nav-item"><%= link_to "Departments", admin_departments_path, :class => 'nav-link'  %></li>
+              <li class="nav-item"><%= link_to "Users", admin_users_path, :class => 'nav-link'  %></li>
+              <li class="nav-item"><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'nav-link'  %></li>
             <% else %>
               <% if user_signed_in? %>
-                <li><%= link_to current_user.email , '#' , :class => 'active navbar-link' %> </li>
-                <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
-                <li><%= link_to "All Feeds", user_feeds_path, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Your Feeds", department_user_feeds_path, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Departments", user_departments_path, :class => 'navbar-link'  %></li>
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                <li class="nav-item active"><%= link_to current_user.email , '#' , :class => 'active nav-link' %> </li>
+                <li class="nav-item"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> </li>
+                <li class="nav-item"><%= link_to "All Feeds", user_feeds_path, :class => 'nav-link'  %></li>
+                <li class="nav-item"><%= link_to "Your Feeds", department_user_feeds_path, :class => 'nav-link'  %></li>
+                <li class="nav-item"><%= link_to "Departments", user_departments_path, :class => 'nav-link'  %></li>
+                <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %></li>
                 <%else%>
-                  <li><%= link_to "Sign in", new_user_session_path, :class => 'navbar-link'  %></li>
-                  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
-                  <li><%= link_to "Admin", new_admin_session_path, :class => 'navbar-link'  %></li>
+                  <li class="nav-item"><%= link_to "Sign in", new_user_session_path, :class => 'nav-link'  %></li>
+                  <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %></li>
+                  <li class="nav-item"><%= link_to "Admin", new_admin_session_path, :class => 'nav-link'  %></li>
                 <%end%>
             <% end %>
           </ul>
@@ -58,11 +53,12 @@
 <%= yield :top_content %>
 
 <div class="container">
-
     <h1><%= yield :header %></h1>
-  <%= yield %>
+    <div class="container py-5">
+      <%= yield %>
+    </div>
 </div>
-<footer class="footer">
+<footer class="footer bg-grey">
    <div class="container">
      <p class="text-muted">Developed by Allwin</p>
    </div>

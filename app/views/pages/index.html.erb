@@ -2,11 +2,22 @@
   <div class="jumbotron">
     <div class="container">
       <h1>Welcome!</h1>
-      <% if !(user_signed_in?) && !(admin_signed_in?)%>
-      <p>Register to get started.</p>
       <p>
-        <%= link_to 'Register', new_user_registration_path, :class => 'btn btn-primary btn-lg' %>
+        Get information from you organization instantly with the help of InfoTap.
+        Get inside to know more...
       </p>
+      <% if !(user_signed_in?) && !(admin_signed_in?)%>
+        <div class="row py-5">
+          <div class="col-md-6">
+            <h5>Register to get started...</h5>
+            <%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-success btn-lg' %>
+          </div>
+          <div class="col-md-6">
+            <h5>Already a user...</h5>
+            <%= link_to 'Sign In', new_user_session_path, :class => 'btn btn-primary btn-lg' %>
+          </div>
+        </div>
+      <% else %>
       <% end %>
     </div>
   </div>

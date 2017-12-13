@@ -17,15 +17,17 @@ class User::DepartmentsUsersController < UserController
   def subscribe
     department=Department.find(department_user_params[:id])
     department_user =DepartmentUser.create(department: department, user: current_user)
-    redirect_to (:back)
+    redirect_back(fallback_location: root_path)
+
   end
 
   def unsubscribe
     department=Department.find(department_user_params[:id])
 
     department_user =DepartmentUser.where(department: department, user: current_user)
-    DepartmentUser.destroy(department_user)
-    redirect_to  (:back)
+    DepartmentUser.destroy(department_user.ids)
+    redirect_back(fallback_location: root_path)
+
   end
 
   private

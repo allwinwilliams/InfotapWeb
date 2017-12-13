@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
-  <%= link_to '<< Feeds List', user_feeds_path, :class=>'btn btn-success btn-sm'%>
-  <h1 class="text-center color-blue"><strong><%= @feed.title %></strong></h1>
-  <h5 class="text-center color-black"><%=  link_to Department.find(@feed.department_id).name, user_show_feeds_path(@feed.department_id) %></h5>
-<p>
-  <%= @feed.description %>
-</p>
+<div class="text-center">
+  <h1 class="color-blue"><strong><%= @feed.title %></strong></h1>
+  <h5 class="color-black"><%=  link_to Department.find(@feed.department_id).name, user_show_feeds_path(@feed.department_id) %></h5>
+</div>
+<div class="container py-5">
+  <p>
+    <%= @feed.description %>
+  </p>
+</div>

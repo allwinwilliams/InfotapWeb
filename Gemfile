@@ -14,6 +14,8 @@ gem 'coffee-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :rubya
 
+gem 'bootstrap'
+# gem 'bootstrap-sass'
 #gem 'omniauth'
 #gem 'devise-token_authenticatable'
 
@@ -31,6 +33,8 @@ gem 'sdoc', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 #gem 'devise', '3.4.1'
 gem "devise", :git => "git://github.com/plataformatec/devise.git"
