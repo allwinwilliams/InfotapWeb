@@ -1,10 +1,14 @@
 <%= render "components/notice" %>
-<div class="container">
+<div class="container py-5">
   <%= link_to '<<Back', admin_departments_path, :class=>'btn btn-primary btn-sm color-white ' %>
   <h1  class="text-center"><strong><%= @department.name %></strong></h1>
-  <div class="mp-x-0 row">
-    <strong class="list-group-item-text text-center color-white col-md-6"><%=  link_to "EDIT", edit_admin_department_path(@department),:class=>'btn btn-success btn-lg' %></strong>
-    <strong class="list-group-item-text text-center color-white col-md-6"><%= link_to 'DELETE', admin_department_path(@department), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger btn-lg' %></strong>
+  <div class="mp-x-0 pb-5 pt-2 text-center">
+    <strong class="list-group-item-text color-white">
+      <%=  link_to "Edit", edit_admin_department_path(@department),:class=>'btn btn-success' %>
+    </strong>
+    <strong class="list-group-item-text color-white">
+      <%= link_to 'Delete', admin_department_path(@department), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger' %>
+    </strong>
   </div>
   <h2>Department Feeds</h2>
       <% @department.feeds.each do |feed| %>
@@ -13,9 +17,9 @@
           <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
           <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, admin_show_feeds_path(feed.department_id) %></p>
           <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
-          <div class="mp-x-0 row">
-            <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_feed_path(feed) %></strong>
-            <strong class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+          <div class=" container mp-x-0 row">
+            <strong class="list-group-item-text color-green col-md-6"><%=  link_to "Edit", edit_admin_feed_path(feed) %></strong>
+            <strong class="list-group-item-text color-red col-md-6"><%= link_to 'Delete', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
           </div>
         </div>
       <% end %>

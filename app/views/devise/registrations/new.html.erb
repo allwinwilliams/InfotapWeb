@@ -1,13 +1,21 @@
 <div class="container">
-  <div class="text-center w-50 mx-auto">
+  <div class="text-center w-50 mx-auto py-5 pb-5">
     <h2 class="py-4">Sign up</h2>
-
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
+      <div class="field form-group py-3">
+          <label for="inputPassword" class="col-form-label">Full Name</label>
+          <input type="text" class="form-control text-center" id="inputPassword" placeholder="John Doe">
+      </div>
 
       <div class="field form-group py-3">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, class: "form-control text-center" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control text-center", placeholder: "johndoe@example.com" %>
+      </div>
+
+      <div class="field form-group py-3">
+          <label for="inputPassword" class="col-form-label">Date of birth</label>
+          <input type="date" class="form-control text-center" id="inputPassword" placeholder="01/01/2001">
       </div>
 
       <div class="field form-group py-3">
@@ -15,19 +23,36 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control text-center" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control text-center", placeholder: "******"  %>
       </div>
 
       <div class="field  form-group py-3">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control text-center" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control text-center", placeholder: "******"  %>
       </div>
-
+      <div class="field  form-group py-3">
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Male
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Female
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> Others
+          </label>
+        </div>
+      </div>
       <div class="actions">
         <%= f.submit "Sign up", class: "btn btn-success w-100" %>
       </div>
+
     <% end %>
-    <p class="my-4">
+    <p class="my-4 pb-5">
       Already a User? <%= render "devise/shared/links" %>
     </p>
   </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="=en-US">
+<html lang="=en">
 <head>
   <title>Infotap</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -40,18 +40,18 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
-<div class="container">
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
-      <%= value %>
-    </div>
-  <% end %>
+<% if notice %>
+<div class="container ">
+  <div class="container w-100 py-4 position-absolute">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> alert-warning w-100 text-center" role="alert">
+        <%= value %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
+<%end %>
 <%= yield :top_content %>
-
-
     <%= yield :header %>
 
       <%= yield %>

@@ -45,7 +45,7 @@
                 <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
                 <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  Department.find(feed.department_id).name %></p>
                 <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
-                <div class="mp-x-0 row">
+                <div class="mp-x-0  ">
                   <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_feed_path(feed) %></strong>
                   <strong  class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
                 </div>

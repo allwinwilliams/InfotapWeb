@@ -24,14 +24,15 @@
         <% @departments.each do |department| %>
           <div class="list-group-item py-4 border-0">
             <%= link_to admin_department_path(department.id) do %>
-              <h4 class="list-group-item-heading col-md-12 color-blue"><%=  truncate(department.name, :length => 50) %></h4>
-              <h3 class="list-group-item-heading col-md-12 color-black"> id :<%=  department.id %></h3>
+              <h3 class="list-group-item-heading col-md-12 color-blue"><%=  truncate(department.name, :length => 50) %></h4>
             <%end%>
-            <div class="mp-x-0 row">
+            <div class="mp-x-0 py-3">
               <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_department_path(department) %></strong>
               <strong class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_department_path(department), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
             </div>
+            <hr />
           </div>
+
         <% end %>
         </div>
   <% end %>
