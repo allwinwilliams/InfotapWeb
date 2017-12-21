@@ -1,30 +1,33 @@
-<p id="notice"><%= notice %></p>
-<h2 class="text-center my-3 py-2">Departments</h2>
-<div class="text-center">
-<% @departments.each do |department| %>
-  <div class="list-group py-5 w-60 mx-auto">
-    <div class="row">
-      <div class="col-md-6 ">
-        <%= link_to user_department_path(department.id) do %>
-          <h4 class="list-group-item-heading col-md-12 color-blue"><%=  truncate(department.name, :length => 50) %></h4>
-        <%end%>
-      </div>
-      <div class="col-md-6">
-        <% if @department_user_ids.include?(department.id) %>
-          <%= form_for @department, method: :post, url: department_user_unsubscribe_path  do |form| %>
-            <%= form.text_field :id, value: department.id, type: "hidden" %>
-            <%= form.submit "unsubcribe", class: "btn btn-dark" %>
-          <% end %>
-        <% else %>
-            <%= form_for @department, method: :post, url: department_user_subscribe_path  do |form| %>
-              <%= form.text_field :id, value: department.id, type: "hidden" %>
-              <%= form.submit "subcribe", class: "btn btn-primary" %>
+<%= render "components/notice" %>
+<%= render "components/search_bar" %>
+<div class="container py-3 ">
+    <h2 class="text-center my-3 py-2">Departments</h2>
+    <div class="text-center">
+    <% @departments.each do |department| %>
+      <div class="list-group py-5 w-60 mx-auto">
+        <div class="row">
+          <div class="col-md-6 ">
+            <%= link_to user_department_path(department.id) do %>
+              <h4 class="list-group-item-heading col-md-12 color-blue"><%=  truncate(department.name, :length => 50) %></h4>
+            <%end%>
+          </div>
+          <div class="col-md-6">
+            <% if @department_user_ids.include?(department.id) %>
+              <%= form_for @department, method: :post, url: department_user_unsubscribe_path  do |form| %>
+                <%= form.text_field :id, value: department.id, type: "hidden" %>
+                <%= form.submit "unsubcribe", class: "btn btn-dark" %>
+              <% end %>
+            <% else %>
+                <%= form_for @department, method: :post, url: department_user_subscribe_path  do |form| %>
+                  <%= form.text_field :id, value: department.id, type: "hidden" %>
+                  <%= form.submit "subcribe", class: "btn btn-primary" %>
+                <% end %>
             <% end %>
-        <% end %>
-      </div>
-    </div>
+          </div>
+        </div>
 
-  </div>
-  <hr />
-<% end %>
+      </div>
+      <hr />
+    <% end %>
+    </div>
 </div>

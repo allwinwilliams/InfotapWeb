@@ -17,16 +17,15 @@
         <div class="collapse navbar-collapse mt-2" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
-              <li class="nav-item active"><%= link_to current_admin.email , '#' , :class => 'nav-link' %> </li>
-              <li class="nav-item"><%= link_to 'Edit profile', edit_admin_registration_path, :class => 'nav-link' %> </li>
+              <li class="nav-item active"><%= link_to current_admin.email , edit_admin_registration_path , :class => 'nav-link' %> </li>
               <li class="nav-item"><%= link_to "Feeds", admin_feeds_path, :class => 'nav-link'  %></li>
               <li class="nav-item"><%= link_to "Departments", admin_departments_path, :class => 'nav-link'  %></li>
               <li class="nav-item"><%= link_to "Users", admin_users_path, :class => 'nav-link'  %></li>
               <li class="nav-item"><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'nav-link'  %></li>
             <% else %>
               <% if user_signed_in? %>
-                <li class="nav-item active"><%= link_to current_user.email , '#' , :class => 'active nav-link' %> </li>
-                <li class="nav-item"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> </li>
+                <li class="nav-item active"><%= link_to current_user.email , edit_user_registration_path , :class => 'active nav-link' %> </li>
+
                 <li class="nav-item"><%= link_to "All Feeds", user_feeds_path, :class => 'nav-link'  %></li>
                 <li class="nav-item"><%= link_to "Your Feeds", department_user_feeds_path, :class => 'nav-link'  %></li>
                 <li class="nav-item"><%= link_to "Departments", user_departments_path, :class => 'nav-link'  %></li>
@@ -52,12 +51,11 @@
 
 <%= yield :top_content %>
 
-<div class="container">
-    <h1><%= yield :header %></h1>
-    <div class="container py-5">
+
+    <%= yield :header %>
+
       <%= yield %>
-    </div>
-</div>
+
 <footer class="footer bg-grey">
    <div class="container">
      <p class="text-muted">Developed by Allwin</p>

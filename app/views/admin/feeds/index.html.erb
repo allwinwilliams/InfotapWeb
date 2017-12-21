@@ -1,56 +1,58 @@
-<p id="notice"><%= notice %></p>
-<%= link_to 'New Feed', new_admin_feed_path, :class=>'btn color-white btn-success btn-sm'%>
-<% if @feed %>
-<%= link_to '<< Feeds List', admin_feeds_path, :class=>'btn color-white btn-success btn-sm'%>
+<%= render "components/notice" %>
+<div class="container py-5">
+  <%= link_to 'New Feed', new_admin_feed_path, :class=>'btn color-white btn-success btn-sm'%>
+  <% if @feed %>
+  <%= link_to '<< Feeds List', admin_feeds_path, :class=>'btn color-white btn-success btn-sm'%>
 
-<h1 class="text-center"><strong><%= @feed.title %></strong></h1>
-<h5 class="text-center"><%=  link_to Department.find(@feed.department_id).name, admin_show_feeds_path(@feed.department_id) %></h5>
+  <h1 class="text-center"><strong><%= @feed.title %></strong></h1>
+  <h5 class="text-center"><%=  link_to Department.find(@feed.department_id).name, admin_show_feeds_path(@feed.department_id) %></h5>
 
-<p>
-<%= @feed.description %>
-</p>
-
-<% else %>
-  <% if @department %>
-    <h1>Listing Department Feeds</h1>
-        <% @department.feeds.each do |feed| %>
-          <div class="list-group mp-x-0 row">
-            <h4 class="list-group-item-heading col-md-12 color-blue"><%= truncate(feed.title, :length => 50) %></h4>
-            <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
-            <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, admin_show_feeds_path(feed.department_id) %></p>
-            <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
-            <div class="mp-x-0 row">
-              <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_feed_path(feed) %></strong>
-              <strong class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
-            </div>
-          </div>
-        <% end %>
+  <p>
+  <%= @feed.description %>
+  </p>
 
   <% else %>
-    <div class="row">
-      <h1 class="col-md-6">Listing Feeds</h1>
-      <%= form_tag(admin_feeds_path, method: "get", class:'form-group') do %>
-        <div class="input-group">
-           <%= text_field_tag :q, params[:q], placeholder: "Search.." , class:'form-control'%>
-           <span class="input-group-btn">
-             <%= submit_tag("Search",class:'btn btn-primary')%>
-           </span>
-         </div>
-       </div>
-      <% end %>
-    </div>
-        <% @feeds.each do |feed| %>
-          <div class="list-group mp-x-0 row">
-              <h4 class="list-group-item-heading col-md-12 color-blue"><%=link_to truncate(feed.title, :length => 50), admin_feed_path(feed)%></h4>
+    <% if @department %>
+      <h1>Listing Department Feeds</h1>
+          <% @department.feeds.each do |feed| %>
+            <div class="list-group mp-x-0 row">
+              <h4 class="list-group-item-heading col-md-12 color-blue"><%= truncate(feed.title, :length => 50) %></h4>
               <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
-              <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  Department.find(feed.department_id).name %></p>
+              <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, admin_show_feeds_path(feed.department_id) %></p>
               <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
               <div class="mp-x-0 row">
                 <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_feed_path(feed) %></strong>
-                <strong  class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+                <strong class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
               </div>
-          </div>
+            </div>
+          <% end %>
+    <% else %>
+      <div class="row">
+        <h1 class="col-md-6">Listing Feeds</h1>
+        <%= form_tag(admin_feeds_path, method: "get", class:'form-group') do %>
+          <div class="input-group">
+             <%= text_field_tag :q, params[:q], placeholder: "Search.." , class:'form-control'%>
+             <span class="input-group-btn">
+               <%= submit_tag("Search",class:'btn btn-primary')%>
+             </span>
+           </div>
         <% end %>
+      </div>
+          <div class="list-group mp-x-0 border-0 py-5 row">
+          <% @feeds.each do |feed| %>
+              <li class="list-group-item border-0">
+                <h4 class="list-group-item-heading col-md-12 color-blue"><%=link_to truncate(feed.title, :length => 50), admin_feed_path(feed)%></h4>
+                <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
+                <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  Department.find(feed.department_id).name %></p>
+                <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
+                <div class="mp-x-0 row">
+                  <strong class="list-group-item-text color-green col-md-6"><%=  link_to "EDIT", edit_admin_feed_path(feed) %></strong>
+                  <strong  class="list-group-item-text color-red col-md-6"><%= link_to 'DELETE', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+                </div>
+              </li>
+          <% end %>
+        </div >
+    <% end %>
   <% end %>
-<% end %>
-<br>
+  <br>
+</div>

@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%= render "components/notice" %>
+<%= render "components/search_bar" %>
+<div class="container py-3 ">
   <% if @feed %>
     <%= link_to '<< Feeds List', user_feeds_path, :class=>'btn btn-success btn-sm'%>
     <h1 class="text-center"><strong><%= @feed.title %></strong></h1>
@@ -18,16 +20,8 @@
           </div>
         <% end %>
     <% else %>
-        <%= form_tag(user_feeds_path, method: "get", class:'form-group') do %>
-          <div class="input-group">
-             <%= text_field_tag :q, params[:q], placeholder: "Search.." , class:'form-control'%>
-             <span class="input-group-btn">
-               <%= submit_tag("Search",class:'btn btn-primary')%>
-             </span>
-           </div>
-         </div>
-        <% end %>
-        <h2 class="text-center pb-5">All Feeds</h2>
+
+      <h2 class="text-center pb-5">All Feeds</h2>
       <% @feeds.each do |feed| %>
       <div class="list-group mp-x-0 row">
         <%= link_to user_feed_path(feed) do%>
@@ -42,3 +36,4 @@
 
     <% end %>
   <% end %>
+</div>

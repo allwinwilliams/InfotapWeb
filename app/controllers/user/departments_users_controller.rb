@@ -1,6 +1,5 @@
 class User::DepartmentsUsersController < UserController
   def index
-
     if params[:q]
       @feeds = Feed.search(params[:q])
     else

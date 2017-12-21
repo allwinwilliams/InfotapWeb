@@ -1,34 +1,37 @@
-<h1>New Feed:</h1>
+<%= render "components/notice" %>
+<div class="container py-5">
+  <h1>New Feed:</h1>
 
-<%= form_for @feed, :url => "#{admin_feeds_path}" do |f| %>
-  <% if @feed.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
+  <%= form_for @feed, :url => "#{admin_feeds_path}" do |f| %>
+    <% if @feed.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
 
-      <ul>
-      <% @feed.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @feed.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field form-group  form-group-lg">
+      <%= f.label :title %><br>
+      <%= f.text_field :title ,:class=>'form-control'%>
+    </div>
+    <div class="field form-group  form-group-lg">
+      <%= f.label :description %><br>
+      <%= f.text_area :description ,:class=>'form-control'%>
+    </div>
+    <div class="field form-group  form-group-lg">
+      <%= f.label :department %><br>
+      <%= f.collection_select :department_id, @departments, :id, :name, prompt: true , :class=>'dropdown'%>
+    </div>
+    <div class="actions width-100">
+      <%= f.submit "Create Feed", class: "btn btn-success" %>
     </div>
   <% end %>
 
-  <div class="field form-group  form-group-lg">
-    <%= f.label :title %><br>
-    <%= f.text_field :title ,:class=>'form-control'%>
-  </div>
-  <div class="field form-group  form-group-lg">
-    <%= f.label :description %><br>
-    <%= f.text_area :description ,:class=>'form-control'%>
-  </div>
-  <div class="field form-group  form-group-lg">
-    <%= f.label :department %><br>
-    <%= f.collection_select :department_id, @departments, :id,:name, prompt: true , :class=>'dropdown-menu'%>
-  </div>
-  <div class="actions width-100">
-    <%= f.submit%>
-  </div>
-<% end %>
 
-
-<%= link_to 'Back', admin_feeds_path %>
+  <%= link_to 'Back', admin_feeds_path %>
+</div>
