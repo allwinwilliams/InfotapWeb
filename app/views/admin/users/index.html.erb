@@ -8,15 +8,16 @@
   <% elsif @users %>
     <h1>Listing users:</h1>
       <% @users.each do |user| %>
-        <div class="list-group mp-x-0 row">
+        <div class="list-group mp-x-0 py-3">
           <%=link_to admin_user_path(user) do%>
-            <h4 class="list-group-item-heading col-md-12 color-blue"><%= user.email%></h4>
+            <h5 class="list-group-item-heading col-md-12 color-dark"><%= user.email%></h5>
             <p class="list-group-item-text color-grey col-md-3 color-grey">user id: <%=  user.id %></p>
             <p class="list-group-item-text color-grey col-md-3 color-grey">sign in count: <%=  user.sign_in_count %></p>
             <p class="list-group-item-text color-grey col-md-3 color-grey">last sign in: <%= Time.at(user.last_sign_in_at).strftime("%d-%m-%y %I:%M%P") %></p>
             <p class="list-group-item-text color-grey col-md-3 color-grey">created in: <%= Time.at(user.created_at).strftime("%d-%m-%y %I:%M%P") %></p>
           <%end%>
         </div>
+        <hr />
       <% end %>
   <% end %>
 </div>

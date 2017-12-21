@@ -19,9 +19,10 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+
   <div class="field">
-    <%= f.label :department %><br>
-    <%= f.collection_select :department_id, @departments, :id,:name, prompt: true %>
+      <%= f.label :department %><br>
+      <%= f.collection_select :department_id, @departments, :id,:name, prompt: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

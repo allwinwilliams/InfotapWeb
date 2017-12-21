@@ -40,26 +40,26 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-<% if notice %>
-<div class="container ">
-  <div class="container w-100 py-4 position-absolute">
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %> alert-warning w-100 text-center" role="alert">
-        <%= value %>
-      </div>
-    <% end %>
+  <% if notice %>
+  <div class="container ">
+    <div class="container w-100 py-4 position-absolute">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %> alert-warning w-100 text-center" role="alert">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-<%end %>
-<%= yield :top_content %>
-    <%= yield :header %>
+  <%end %>
+  <%= yield :top_content %>
+      <%= yield :header %>
 
-      <%= yield %>
+        <%= yield %>
 
-<footer class="footer bg-grey">
-   <div class="container">
-     <p class="text-muted">Developed by Allwin</p>
-   </div>
+  <footer class="footer bg-grey">
+    <div class="container">
+      <span class="text-muted">&copy Knowtify Team</span>
+    </div>
   </footer>
 </body>
 </html>
