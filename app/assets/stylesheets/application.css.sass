@@ -18,12 +18,52 @@
 
 body
   margin-bottom: 60px
-  padding-top: 60px
+  margin-top: 80px
+  background-color: $light !important
+
 html
   position: relative
   min-height: 100%
+  overflow-x: hidden !important
+
 *
   border-radius: 0 !important
+
+.navbar
+  opacity: 0.9
+  -webkit-filter: drop-shadow(0px 2px 4px #222)
+  filter: drop-shadow(0px 2px 4px #222)
+
+#index-jumbotron
+  background: none
+
+
+#header-blue
+  content: ""
+  position: absolute
+  width: 200%
+  height: 900px
+  top: -200px
+  left: -50%
+  z-index: -1
+  -webkit-transform: rotate(-3deg)
+  -moz-transform: rotate(-3deg)
+  -ms-transform: rotate(-3deg)
+  transform: rotate(-3deg)
+
+nav ul li a
+  margin: 0 5px
+  padding-bottom: 5px
+  border: 0px
+  -webkit-transition: border .5s !important
+  transition: border .5s !important
+
+nav ul li a:hover
+  border-bottom: 2px solid #eee
+  padding-bottom: 3px
+
+section
+  min-height: 200px
 
 .footer
   position: absolute
@@ -32,7 +72,52 @@ html
   height: 60px
   padding-top: 10px
   border-top: 1px solid #545454
-  background-color: #343a40
+  background-color: #afafaf
+  -webkit-filter: invert(100%)
+  filter: invert(100%)
+
+#index-content
+  animation-name: fade-in
+  animation-duration: 2s
+  animation-timing-function: linear
+
+.fade-in-content
+  animation-name: fade-in
+  animation-duration: 2s
+  animation-timing-function: linear
+
+@keyframes fade-in
+    from
+      opacity: 0
+    to
+      opacity: 1
+
+
+// #how .content:before
+//   content: ""
+//   background-image: url('how.png')
+//   width: 100%
+//   height: 200px
+//   -webkit-filter: blur(1px) grayscale(100%)
+//   filter: blur(1px) grayscale(100%)
+
+#how-img
+  background-image: url('how.png')
+  background-attachment: fixed
+  background-position: center
+  width: 100%
+  min-height: 200px
+  -webkit-filter: blur(1px) invert(10%) opacity(90%) grayscale(60%)
+  filter: blur(1px) invert(10%) opacity(90%)
+
+#how .content
+  -webkit-filter: drop-shadow(1px 1px 0px #222)
+  filter: drop-shadow(1px 1px 0px #222)
+  left: 0
+  right: 0
+  z-index: 9999
+  margin-left: 20px
+  margin-right: 20px
 
 a:hover
   text-decoration: none !important
@@ -45,13 +130,18 @@ a:hover
 
 .color-green,.color-green a, .color-green a:active,.color-green a:hover, .color-green a:active,.color-green a:visited
   color: #00C853 !important
+
 .color-red,.color-red a, .color-red a:active,.color-red a:hover, .color-red a:active,.color-red a:visited
   color: #F44336 !important
+
 .color-white,.color-white a, .color-white a:active,.color-white a:hover, .color-white a:active,.color-white a:visited
   color: #fefefe !important
+
 .color-black,.color-black a, .color-black a:active,.color-black a:hover, .color-black a:active,.color-black a:visited
   color: #121212
+
 .color-blue,.color-blue a, .color-blue a:active,.color-blue a:hover, .color-blue a:active,.color-blue a:visited
   color: #2196F3
+
 .btn
   color: #fefefe !important

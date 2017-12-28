@@ -1,5 +1,7 @@
 <% content_for :top_content do %>
-  <div class="jumbotron bg-primary text-white py-5 mb-0  rounded-0">
+<div id="index-content" class="">
+  <section id="index-jumbotron" class="jumbotron text-white py-5 mb-3  rounded-0">
+    <div id="header-blue" class="bg-primary"></div>
     <div class="container py-5">
       <h2 class="display-3">Search.</h1>
       <h2 class="display-3">Subcribe.</h1>
@@ -23,31 +25,59 @@
           </div>
         </div>
     </div>
-  </div>
-  <div class="jumbotron bg-light text-dark py-5 mb-0">
+  </section>
+  <section id="why" class="jumbotron bg-light text-dark py-5 mb-0">
     <h1 class="text-center display-3">Why InfoTap?</h1>
-    <div class="container py-5 text-center">
 
-      <h2 class="display-4">Easy.</h1>
-        <h3 class="lead py-3">
-          InfoTap is easy to use and infact easier than conventions systems in more ways.
-        </h3>
-      <h2 class="display-4">Fast.</h1>
-        <h3 class="lead py-3">
-          The communcation between organization and its people is done without any kind of delays.
-        </h3>
-      <h2 class="display-4">Flexible.</h1>
-      <h3 class="lead py-3">
-        Through various methods we provide organizations with number of ways to communication and get connected with their employees.
-      </h3>
+     <div class=" py-5 text-center ">
+      <div class="row py-5">
+        <div class="col-md-4">
+          <i class="fa fa-smile display-3 my-3"></i>
+          <h2 class="display-4 text-success">Easy</h1>
+            <h3 class="lead py-3">
+              Infotap is easy to use and infact easier than conventions systems in more ways.
+            </h3>
+          </div>
+          <div class="col-md-4">
+          <i class="fa fa-fighter-jet display-3 my-3"></i>
+          <h2 class="display-4 text-success">Fast</h1>
+            <h3 class="lead py-3">
+              The communcation between web articles and its people is done without any kind of delays.
+            </h3>
+          </div>
+          <div class="col-md-4">
+          <i class="fa fa-lock display-3 my-3"></i>
+          <h2 class="display-4 text-success">Solid</h1>
+          <h3 class="lead py-3">
+            Through various algorithms we provide means by which users gets information.
+          </h3>
+        </div>
+      </div>
     </div>
-  </div>
-<div class="jumbotron bg-dark text-white py-5 pb-5 text-center">
-    <h1 class=" text-center">
-      Sign up to get updates from your  on the go...
-    </h1>
-    <div class="text-center py-5">
-      <%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-primary btn-lg w-50' %>
+  </section>
+
+  <section id="how" class="jumbotron text-white mb-0 p-0 text-center " style="border-top: 5px solid #324644">
+    <div id="how-img" class="m-0 p-0 ">
+      <div class="content py-5">
+        <h1 class="text-center display-3 text-success py-5">
+          <strong>How it works?</strong>
+        </h1>
+        <p class="pb-5 lead">
+          By various algorithms we gather blog posts and news articles from a trusted and authenticated list of website.
+          Then, we organize them by mapping articles with different topics. Thus we provide you with a great curated list of articles.
+        </p>
+      </div>
     </div>
+  </section>
+
+  <section id="updates" class="jumbotron bg-dark text-white py-5 pb-5 text-center">
+      <h1 class=" text-center">
+        Sign up to get updates from your  on the go...
+      </h1>
+      <div class="text-center py-5">
+        <%= link_to 'Sign Up', new_user_registration_path, :class => 'btn btn-primary btn-lg w-50' %>
+      </div>
+  </section>
+
 </div>
 <% end %>
