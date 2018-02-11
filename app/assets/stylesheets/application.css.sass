@@ -31,8 +31,8 @@ html
 
 .navbar
   opacity: 0.9
-  -webkit-filter: drop-shadow(0px 2px 4px #222)
-  filter: drop-shadow(0px 2px 4px #222)
+  -webkit-filter: drop-shadow(0px 1px 1px #222)
+  filter: drop-shadow(0px 1px 1px #222)
 
 #index-jumbotron
   background: none
@@ -46,10 +46,10 @@ html
   top: -200px
   left: -50%
   z-index: -1
-  -webkit-transform: rotate(-3deg)
-  -moz-transform: rotate(-3deg)
-  -ms-transform: rotate(-3deg)
-  transform: rotate(-3deg)
+  -webkit-transform: rotate(-2deg)
+  -moz-transform: rotate(-2deg)
+  -ms-transform: rotate(-2deg)
+  transform: rotate(-2deg)
 
 nav ul li a
   margin: 0 5px
@@ -69,19 +69,13 @@ section
   position: absolute
   bottom: 0
   width: 100%
-  height: 60px
+  height: 80px
   padding-top: 10px
-  border-top: 1px solid #545454
-  background-color: #afafaf
-  -webkit-filter: invert(100%)
-  filter: invert(100%)
+  background-color: #dfdfdf
+  border-top: 1px solid #ddd
+  color: #ddd
 
-#index-content
-  animation-name: fade-in
-  animation-duration: 2s
-  animation-timing-function: linear
-
-.fade-in-content
+#index-content, .fade-in-content
   animation-name: fade-in
   animation-duration: 2s
   animation-timing-function: linear
@@ -91,33 +85,6 @@ section
       opacity: 0
     to
       opacity: 1
-
-
-// #how .content:before
-//   content: ""
-//   background-image: url('how.png')
-//   width: 100%
-//   height: 200px
-//   -webkit-filter: blur(1px) grayscale(100%)
-//   filter: blur(1px) grayscale(100%)
-
-#how-img
-  background-image: url('how.png')
-  background-attachment: fixed
-  background-position: center
-  width: 100%
-  min-height: 200px
-  -webkit-filter: blur(1px) invert(10%) opacity(90%) grayscale(60%)
-  filter: blur(1px) invert(10%) opacity(90%)
-
-#how .content
-  -webkit-filter: drop-shadow(1px 1px 0px #222)
-  filter: drop-shadow(1px 1px 0px #222)
-  left: 0
-  right: 0
-  z-index: 9999
-  margin-left: 20px
-  margin-right: 20px
 
 a:hover
   text-decoration: none !important
@@ -145,3 +112,6 @@ a:hover
 
 .btn
   color: #fefefe !important
+
+.btn:hover
+  color: none !important

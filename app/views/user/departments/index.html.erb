@@ -1,10 +1,10 @@
 <%= render "components/notice" %>
 <%= render "components/search_bar" %>
-<div class="container py-3 ">
+<div class="container py-3">
     <h2 class="text-center my-3 py-2">Departments</h2>
     <div class="text-center">
     <% @departments.each do |department| %>
-      <div class="list-group py-5 w-60 mx-auto">
+      <div class="list-group py-4 w-60 mx-auto">
         <div class="row">
           <div class="col-md-6 ">
             <%= link_to user_department_path(department.id) do %>

@@ -1,5 +1,5 @@
-<div class="bg-light border">
-  <div class="container pt-5 pb-4">
+<div class="bg-light border pt-5">
+  <div class="container py-4 mt-5">
     <%= form_tag(user_feeds_path, :method => "get", class:'form-group')  do %>
       <div class="input-group">
         <%= text_field_tag :q, params[:q], class:'form-control', placeholder: "Search Posts, Categories, Topics..." %>

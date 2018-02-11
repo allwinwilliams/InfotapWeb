@@ -1,6 +1,6 @@
 <%= render "components/notice" %>
 <%= render "components/search_bar" %>
-<div class="container py-3 ">
+<div class="container py-3">
   <div class="text-center">
     <h1 class="color-blue"><strong><%= @feed.title %></strong></h1>
     <h5 class="color-black"><%=  link_to Department.find(@feed.department_id).name, user_show_feeds_path(@feed.department_id) %></h5>

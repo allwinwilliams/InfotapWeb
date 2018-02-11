@@ -1,6 +1,6 @@
 <%= render "components/notice" %>
 <%= render "components/search_bar" %>
-<div class="container py-3 ">
+<div class="container py-3">
   <div class="mb-5 text-center">
     <h1 class=""><strong><%= @department.name %></strong></h1>
     <div class="">
@@ -18,12 +18,13 @@
     </div>
   </div>
   <% @department.feeds.each do |feed| %>
-  <div class="list-group mp-x-0 row">
+  <div class="list-group mp-x-0 row py-4">
       <h4 class="list-group-item-heading col-md-12 color-blue"><%= link_to truncate(feed.title, :length => 50), user_feed_path(feed) %></h4>
       <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
       <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, user_show_feeds_path(feed.department_id) %></p>
       <p class="list-group-item-text color-grey col-md-6 color-grey">Posted on: <%= Time.at(feed.updated_at).strftime("%d-%m-%y %I:%M%P") %></p>
     </a>
   </div>
+  <hr/>
   <% end %>
 </div>

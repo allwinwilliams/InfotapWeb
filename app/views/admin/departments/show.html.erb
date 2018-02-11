@@ -1,5 +1,5 @@
 <%= render "components/notice" %>
-<div class="container py-5">
+<div class="container py-5 mt-5">
   <%= link_to '<<Back', admin_departments_path, :class=>'btn btn-primary btn-sm color-white ' %>
   <h1  class="text-center"><strong><%= @department.name %></strong></h1>
   <div class="mp-x-0 pb-5 pt-2 text-center">
@@ -11,8 +11,9 @@
     </strong>
   </div>
   <h2>Department Feeds</h2>
+  <div class="py-4">
       <% @department.feeds.each do |feed| %>
-        <div class="list-group mp-x-0 row">
+        <div class="list-group mp-x-0 row pb-5">
           <h4 class="list-group-item-heading col-md-12 color-blue"><%= truncate(feed.title, :length => 50) %></h4>
           <p class="list-group-item-text col-md-12 color-black"><%= truncate(feed.description, :length => 50) %></p>
           <p class="list-group-item-text color-grey col-md-6 color-grey">Department: <%=  link_to Department.find(feed.department_id).name, admin_show_feeds_path(feed.department_id) %></p>
@@ -22,5 +23,7 @@
             <strong class="list-group-item-text color-red col-md-6"><%= link_to 'Delete', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
           </div>
         </div>
+        <hr />
       <% end %>
+  </div>
 </div>

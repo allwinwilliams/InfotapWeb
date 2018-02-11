@@ -1,5 +1,5 @@
 <%= render "components/notice" %>
-<div class="container py-5">
+<div class="container py-5 mt-5">
   <%= link_to 'New Department', new_admin_department_path, :class=>'btn color-white btn-primary btn-sm'%>
   <% if @department %>
       <h1><%= @department.name %></h1>
@@ -32,7 +32,6 @@
             </div>
             <hr />
           </div>
-
         <% end %>
         </div>
   <% end %>
